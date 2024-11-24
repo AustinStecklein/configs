@@ -19,13 +19,20 @@ harpoon:setup()
 -- REQUIRED
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-vim.keymap.set("n", "<C-j>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-;>", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<leader>j", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>k", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>l", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>;", function() harpoon:list():select(4) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
+vim.keymap.set("n", "<leader>p", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<leader>n", function() harpoon:list():next() end)
+
+-- key mapping for delete without saving
+vim.keymap.set("n", "<leader>dd", '"_dd')
+vim.keymap.set("v", "<leader>d", '"_d')
+
+-- key mapping for replace with default register
+vim.keymap.set("v", "<leader>r", '"_dP')

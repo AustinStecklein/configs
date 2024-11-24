@@ -11,6 +11,7 @@ set ignorecase
 set noswapfile
 nnoremap <CR> :noh<CR><CR>
 syntax on
+set clipboard^=unnamed,unnamedplus
 
 "spell checker settings
 set spell spelllang=en_us
