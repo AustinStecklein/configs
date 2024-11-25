@@ -30,6 +30,13 @@ vim.keymap.set("n", "<leader>;", function() harpoon:list():select(4) end)
 vim.keymap.set("n", "<leader>p", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>n", function() harpoon:list():next() end)
 
+-- Some helper functions for harpoon
+vim.keymap.set("n", "<leader>c", function() harpoon:list():clear() end)
+vim.keymap.set("n", "<leader>1a", function() harpoon:list():replace_at(1) end)
+vim.keymap.set("n", "<leader>2a", function() harpoon:list():replace_at(2) end)
+vim.keymap.set("n", "<leader>3a", function() harpoon:list():replace_at(3) end)
+vim.keymap.set("n", "<leader>4a", function() harpoon:list():replace_at(4) end)
+
 -- key mapping for delete without saving
 vim.keymap.set("n", "<leader>dd", '"_dd')
 vim.keymap.set("v", "<leader>d", '"_d')
