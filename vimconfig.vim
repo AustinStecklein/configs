@@ -19,7 +19,6 @@ hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 nnoremap <Leader>z z=
 
-
 " Plug in section
 call plug#begin()
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
@@ -45,3 +44,6 @@ nnoremap <Leader>f <cmd>lua require('fzf-lua').files()<CR>
 nnoremap <Leader>g <cmd>lua require('fzf-lua').live_grep()<CR>
 nnoremap <Leader>c <cmd>lua require('fzf-lua').git_commits()<CR>
 nnoremap <Leader>s <cmd>lua require('fzf-lua').git_status()<CR>
+
+" lsp keybindings. I don't want to be bothered :)
+let g:lsp_diagnostics_virtual_text_enabled = 0

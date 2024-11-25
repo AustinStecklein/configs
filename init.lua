@@ -33,6 +33,6 @@ vim.keymap.set("n", "<leader>n", function() harpoon:list():next() end)
 -- key mapping for delete without saving
 vim.keymap.set("n", "<leader>dd", '"_dd')
 vim.keymap.set("v", "<leader>d", '"_d')
-
+ 
 -- key mapping for replace with default register
 vim.keymap.set("v", "<leader>r", '"_dP')
