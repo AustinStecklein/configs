@@ -27,6 +27,8 @@ Plug 'ibhagwan/fzf-lua'
 Plug 'will/rose-pine-neovim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ThePrimeagen/harpoon', {'branch': 'harpoon2'}
+" my very own plugin 
+Plug 'AustinStecklein/neo-find'
 
 " lsp plugins
 Plug 'prabirshrestha/vim-lsp'
