@@ -59,6 +59,7 @@ local ignore_args  = " ! -path '*/venv/*' ! -name 'venv' ! -path '*/.*/*' ! -nam
 vim.keymap.set("n", "<Leader>df", function() neo_find.find_dir(ignore_args) end)
 -- this command will not have the filter applied in case that I need to find dirs in the filtered files
 vim.keymap.set("n", "<Leader>hf", function() neo_find.find_dir() end)
+-- This is the bread and butter commands
+vim.keymap.set("n", "<Leader>F", function() neo_find.find_dir_and_search(ignore_args, fzflua.files) end)
+vim.keymap.set("n", "<Leader>HF", function() neo_find.find_dir_and_search(ignore_args, fzflua.live_grep) end)
 
--- This is the bread and butter command
-vim.keymap.set("n", "<Leader>ff", function() neo_find.find_dir_and_search(ignore_args, fzflua.files) end)
