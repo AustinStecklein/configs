@@ -1,17 +1,27 @@
 " basic remaps and initial settings
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set number
 set relativenumber
 set showmatch
 set ruler
-inoremap jk <Esc>
-let mapleader = " "
 set ignorecase
 set noswapfile
+
+" best remap there has ever been
+inoremap jk <Esc>
+let mapleader = " "
+
+" I want my search to clear after hitting enter
 nnoremap <CR> :noh<CR><CR>
 syntax on
+
+" This is an attempt to make the clipboard work
 set clipboard^=unnamed,unnamedplus
+
+" Keep 3 lines below and above the cursor
+set scrolloff=6
 
 "spell checker settings
 set spell spelllang=en_us
@@ -39,13 +49,6 @@ call plug#end()
 
 " color scheme settings
 colorscheme rose-pine
-
-" FzfLua keybindings
-" I can't believe I haven't been using this. This is a great plugin
-nnoremap <Leader>f <cmd>lua require('fzf-lua').files()<CR>
-nnoremap <Leader>g <cmd>lua require('fzf-lua').live_grep()<CR>
-nnoremap <Leader>c <cmd>lua require('fzf-lua').git_commits()<CR>
-nnoremap <Leader>s <cmd>lua require('fzf-lua').git_status()<CR>
 
 " lsp keybindings. I don't want to be bothered :)
 let g:lsp_diagnostics_virtual_text_enabled = 0
