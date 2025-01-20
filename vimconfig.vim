@@ -9,6 +9,12 @@ set ruler
 set ignorecase
 set noswapfile
 
+" Make find recursive
+set path+=**
+
+" Make the files browser better
+let g:netrw_banner=0
+
 " best remap there has ever been
 inoremap jk <Esc>
 let mapleader = " "
@@ -31,24 +37,12 @@ nnoremap <Leader>z z=
 
 " Plug in section
 call plug#begin()
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ibhagwan/fzf-lua'
 Plug 'will/rose-pine-neovim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'ThePrimeagen/harpoon', {'branch': 'harpoon2'}
+Plug 'tpope/vim-fugitive'
 " my very own plugin 
 Plug 'AustinStecklein/neo-find'
-
-" lsp plugins
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 " color scheme settings
 colorscheme rose-pine
-
-" lsp keybindings. I don't want to be bothered :)
-let g:lsp_diagnostics_virtual_text_enabled = 0
