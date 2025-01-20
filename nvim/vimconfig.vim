@@ -19,8 +19,11 @@ let g:netrw_banner=0
 inoremap jk <Esc>
 let mapleader = " "
 
-"ctags!
+" ctags!
 command! MakeTags !ctags -R .
+" This will keep looking up one folder for a tags file
+set tags=./tags;/
+
 
 " I want my search to clear after hitting enter
 nnoremap <CR> :noh<CR><CR>
