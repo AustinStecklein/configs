@@ -19,6 +19,9 @@ let g:netrw_banner=0
 inoremap jk <Esc>
 let mapleader = " "
 
+"ctags!
+command! MakeTags !ctags -R .
+
 " I want my search to clear after hitting enter
 nnoremap <CR> :noh<CR><CR>
 syntax on
