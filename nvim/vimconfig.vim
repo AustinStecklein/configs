@@ -11,6 +11,8 @@ set noswapfile
 
 " Make find recursive
 set path+=**
+set wildignore+=**/.py*/**
+packadd cfilter
 
 " Make the files browser better
 let g:netrw_banner=0
