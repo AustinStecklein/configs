@@ -27,3 +27,5 @@ vim.keymap.set("n", "<Leader>hf", function() neo_find.find_dir() end)
 -- This is the bread and butter commands
 vim.keymap.set("n", "<Leader>F", function() neo_find.find_dir_and_search(ignore_args, fzflua.files) end)
 vim.keymap.set("n", "<Leader>HF", function() neo_find.find_dir_and_search(ignore_args, fzflua.live_grep) end)
+
+require("oil").setup()
