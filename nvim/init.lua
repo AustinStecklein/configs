@@ -1,6 +1,14 @@
 local vimrc = vim.fn.stdpath("config") .. "/vimconfig.vim"
 vim.cmd.source(vimrc)
 vim.o.pumheight = 5
+require'nvim-treesitter.configs'.setup {
+    -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "asm", "bash", "odin", "rust"},
+    auto_install = true,
+    highlight = {
+        enable = true,
+  },
+}
 
 -- key mapping for delete without saving
 vim.keymap.set("n", "<leader>dd", '"_dd')

@@ -48,6 +48,7 @@ call plug#begin()
 Plug 'ibhagwan/fzf-lua'
 Plug 'will/rose-pine-neovim'
 Plug 'stevearc/oil.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 " my very own plugin 
 Plug 'AustinStecklein/neo-find'
 call plug#end()
