@@ -36,4 +36,8 @@ vim.keymap.set("n", "<Leader>hf", function() neo_find.find_dir() end)
 vim.keymap.set("n", "<Leader>F", function() neo_find.find_dir_and_search(ignore_args, fzflua.files) end)
 vim.keymap.set("n", "<Leader>HF", function() neo_find.find_dir_and_search(ignore_args, fzflua.live_grep) end)
 
-require("oil").setup()
+require("oil").setup({
+    view_options = {
+        show_hidden = true,
+    }
+})
