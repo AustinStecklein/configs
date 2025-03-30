@@ -8,24 +8,10 @@ set showmatch
 set ruler
 set ignorecase
 set noswapfile
+set signcolumn=yes
 
-" Make find recursive
-set path+=**
-set wildignore+=**/.py*/**
 packadd cfilter
-
-" Make the files browser better
-let g:netrw_banner=0
-
-" best remap there has ever been
-inoremap jk <Esc>
 let mapleader = " "
-
-" ctags!
-command! MakeTags !ctags -R .
-" This will keep looking up one folder for a tags file
-set tags=./tags;/
-
 
 " I want my search to clear after hitting enter
 nnoremap <CR> :noh<CR><CR>
@@ -43,15 +29,7 @@ hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 nnoremap <Leader>z z=
 
-" Plug in section
-call plug#begin()
-Plug 'ibhagwan/fzf-lua'
-Plug 'will/rose-pine-neovim'
-Plug 'stevearc/oil.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
-" my very own plugin 
-Plug 'AustinStecklein/neo-find'
-call plug#end()
-
-" color scheme settings
-colorscheme rose-pine
+" highlight trailing whitespace in red
+set list
+set listchars=trail:~,tab:>-,nbsp:␣
+match errorMsg /\s\+$/
