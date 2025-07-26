@@ -44,6 +44,9 @@ require("lazy").setup({
         {"neovim/nvim-lspconfig"},
         {"ibhagwan/fzf-lua"},
         {"AustinStecklein/neo-find"},
+        {'tpope/vim-fugitive'},
+        {'tommcdo/vim-fubitive'},
+        {'tpope/vim-rhubarb'},
         {
         'saghen/blink.cmp',
         dependencies = { 'rafamadriz/friendly-snippets' },
@@ -122,3 +125,14 @@ require'lspconfig'.clangd.setup{}
 -- better movement through quickfix lists
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+
+vim.keymap.set("t", "<C-q>", "<C-\\><C-n>")
+vim.diagnostic.config({virtual_text = true})
+vim.keymap.set("n","<Leader>e", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end)
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.hl.on_yank()
+    end,
+})
