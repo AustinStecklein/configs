@@ -108,8 +108,8 @@ require("oil").setup({
         show_hidden = true,
     }
 })
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.clangd.setup{}
+vim.lsp.enable('pyright')
+vim.lsp.enable('clangd')
 
 vim.diagnostic.config({virtual_text = true})
 vim.keymap.set("n","<Leader>e", function()
