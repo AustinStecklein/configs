@@ -71,7 +71,7 @@ vim.cmd.source(vimrc)
 vim.o.pumheight = 5
 require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "asm", "bash", "odin", "rust", "python"},
+        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "asm", "bash", "odin", "rust", "python", "ocaml"},
         auto_install = true,
         highlight = {
             enable = true,
@@ -100,7 +100,6 @@ vim.keymap.set("n", "<Leader>s", function() fzflua.git_status() end)
 vim.keymap.set("n", "<Leader>b", function() fzflua.git_blame() end)
 vim.keymap.set("n", "<Leader>w", function() fzflua.grep_cword() end)
 vim.keymap.set("n", "<Leader>W", function() fzflua.grep_cWORD() end)
-vim.keymap.set("n", "<Leader>qg", function() fzflua.lgrep_quickfix() end)
 vim.keymap.set("n", "<Leader>r", function() fzflua.resume() end)
 
 require("oil").setup({
@@ -110,6 +109,7 @@ require("oil").setup({
 })
 vim.lsp.enable('pyright')
 vim.lsp.enable('clangd')
+vim.lsp.enable('ocamllsp')
 
 vim.diagnostic.config({virtual_text = true})
 vim.keymap.set("n","<Leader>e", function()
