@@ -111,6 +111,9 @@ vim.lsp.enable('pyright')
 vim.lsp.enable('clangd')
 vim.lsp.enable('ocamllsp')
 
+-- fugitive keybindings
+vim.keymap.set("n", "<Leader>d", ':Gvdiffsplit<CR>')
+
 vim.diagnostic.config({virtual_text = true})
 vim.keymap.set("n","<Leader>e", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
