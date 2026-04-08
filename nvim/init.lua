@@ -43,9 +43,12 @@ require("lazy").setup({
         {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
         {"neovim/nvim-lspconfig"},
         {"ibhagwan/fzf-lua"},
+        { 'nvim-mini/mini.nvim', version = false },
         {'tpope/vim-fugitive'},
-        {'tommcdo/vim-fubitive'},
-        {'tpope/vim-rhubarb'},
+        {
+          'stevearc/overseer.nvim',
+          opts = {},
+        },
         {
         'saghen/blink.cmp',
         dependencies = { 'rafamadriz/friendly-snippets' },
@@ -66,8 +69,41 @@ require("lazy").setup({
     install = { colorscheme = { "habamax" } },
 })
 
-local vimrc = vim.fn.stdpath("config") .. "/vimconfig.vim"
-vim.cmd.source(vimrc)
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.showmatch = true
+vim.opt.smartcase = true
+vim.opt.swapfile = false
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 6
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+vim.opt.list = true
+vim.opt.listchars = { trail = "~", tab = ">-", nbsp = "␣" }
+vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.keymap.set("n", "<CR>", ":noh<CR><CR>")
+vim.cmd("packadd cfilter")
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = function()
+        vim.cmd("hi clear SpellBad")
+        vim.cmd("hi SpellBad cterm=underline ctermfg=red")
+    end
+})
+
+-- Run commands from neovim... I almost switched to emacs until I found this.
+require("overseer").setup({
+    task_list = {
+    direction = "left",
+    }
+})
+vim.keymap.set("n", "<Leader>s", ':OverseerShell<CR>')
+vim.keymap.set("n", "<Leader>t", ':OverseerToggle<CR>')
+
 vim.o.pumheight = 5
 require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all" (the listed parsers MUST always be installed)
@@ -78,14 +114,16 @@ require'nvim-treesitter.configs'.setup {
       },
 }
 -- key mapping for delete without saving
-vim.keymap.set("n", "<leader>dd", '"_dd')
-vim.keymap.set("v", "<leader>d", '"_d')
+vim.keymap.set("n", "<leader>xx", '"_dd')
+vim.keymap.set("v", "<leader>x", '"_d')
 
 -- FzfLua keybindings
 require("fzf-lua").setup({
     keymap = {
         fzf = {
             ["ctrl-q"] = "select-all+accept",
+            ["ctrl-j"]      = "half-page-down",
+            ["ctrl-k"]      = "half-page-up",
         },
     },
 })
@@ -95,18 +133,17 @@ local fzflua = require("fzf-lua")
 vim.keymap.set("n", "<Leader>f", function() fzflua.files() end)
 vim.keymap.set("n", "<Leader>g", function() fzflua.live_grep() end)
 vim.keymap.set("n", "<Leader>G", function() fzflua.live_grep_resume() end)
-vim.keymap.set("n", "<Leader>c", function() fzflua.git_commits() end)
-vim.keymap.set("n", "<Leader>s", function() fzflua.git_status() end)
-vim.keymap.set("n", "<Leader>b", function() fzflua.git_blame() end)
 vim.keymap.set("n", "<Leader>w", function() fzflua.grep_cword() end)
 vim.keymap.set("n", "<Leader>W", function() fzflua.grep_cWORD() end)
 vim.keymap.set("n", "<Leader>r", function() fzflua.resume() end)
+vim.keymap.set("n", "<Leader>b", function() fzflua.buffers() end)
 
 require("oil").setup({
     view_options = {
         show_hidden = true,
     }
 })
+vim.keymap.set("n", "<Leader>o", ':Oil<CR>')
 vim.lsp.enable('pyright')
 vim.lsp.enable('clangd')
 vim.lsp.enable('ocamllsp')
