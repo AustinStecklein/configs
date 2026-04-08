@@ -28,11 +28,7 @@ require("lazy").setup({
     spec = {
         -- add your plugins here
         {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            vim.cmd("colorscheme rose-pine")
-        end
+        "rebelot/kanagawa.nvim",
         },
         {
           'stevearc/oil.nvim',
@@ -45,6 +41,8 @@ require("lazy").setup({
         {"ibhagwan/fzf-lua"},
         { 'nvim-mini/mini.nvim', version = false },
         {'tpope/vim-fugitive'},
+        {'kamykn/spelunker.vim'},
+
         {
           'stevearc/overseer.nvim',
           opts = {},
@@ -68,6 +66,34 @@ require("lazy").setup({
     },
     install = { colorscheme = { "habamax" } },
 })
+-- Default options:
+require('kanagawa').setup({
+    compile = false,             -- enable compiling the colorscheme
+    undercurl = true,            -- enable undercurls
+    commentStyle = { italic = true },
+    functionStyle = {},
+    keywordStyle = { italic = true},
+    statementStyle = { bold = true },
+    typeStyle = {},
+    transparent = false,         -- do not set background color
+    dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
+    terminalColors = true,       -- define vim.g.terminal_color_{0,17}
+    colors = {                   -- add/modify theme and palette colors
+        palette = {},
+        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+    },
+    overrides = function(colors) -- add/modify highlights
+        return {}
+    end,
+    theme = "wave",              -- Load "wave" theme
+    background = {               -- map the value of 'background' option to a theme
+        dark = "wave",           -- try "dragon" !
+        light = "lotus"
+    },
+})
+
+-- setup must be called before loading
+vim.cmd("colorscheme kanagawa")
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -79,8 +105,8 @@ vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 6
-vim.opt.spell = true
-vim.opt.spelllang = { "en_us" }
+vim.opt.spell = false
+--vim.opt.spelllang = { "en_us" }
 vim.opt.list = true
 vim.opt.listchars = { trail = "~", tab = ">-", nbsp = "␣" }
 vim.opt.clipboard = "unnamed,unnamedplus"
