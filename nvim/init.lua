@@ -20,6 +20,26 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.showmatch = true
+vim.opt.smartcase = true
+vim.opt.swapfile = false
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 6
+vim.opt.spell = false
+--vim.opt.spelllang = { "en_us" }
+vim.opt.list = true
+vim.opt.listchars = { trail = "~", tab = ">-", nbsp = "␣" }
+vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.splitbelow = true
+vim.keymap.set("n", "<CR>", ":noh<CR><CR>")
+vim.cmd("packadd cfilter")
 
 -- Setup lazy.nvim
 -- add all plugins
@@ -29,6 +49,9 @@ require("lazy").setup({
         -- add your plugins here
         {
         "rebelot/kanagawa.nvim",
+        -- config = function()
+        --     vim.cmd("colorscheme  kanagawa")
+        -- end
         },
         {
           'stevearc/oil.nvim',
@@ -95,25 +118,6 @@ require('kanagawa').setup({
 -- setup must be called before loading
 vim.cmd("colorscheme kanagawa")
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.showmatch = true
-vim.opt.smartcase = true
-vim.opt.swapfile = false
-vim.opt.signcolumn = "yes"
-vim.opt.scrolloff = 6
-vim.opt.spell = false
---vim.opt.spelllang = { "en_us" }
-vim.opt.list = true
-vim.opt.listchars = { trail = "~", tab = ">-", nbsp = "␣" }
-vim.opt.clipboard = "unnamed,unnamedplus"
-vim.opt.timeoutlen = 300
-vim.opt.undofile = true
-vim.keymap.set("n", "<CR>", ":noh<CR><CR>")
-vim.cmd("packadd cfilter")
 vim.api.nvim_create_autocmd("ColorScheme", {
     callback = function()
         vim.cmd("hi clear SpellBad")
@@ -175,7 +179,8 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('ocamllsp')
 
 -- fugitive keybindings
-vim.keymap.set("n", "<Leader>d", ':Gvdiffsplit<CR>')
+vim.keymap.set("n", "<Leader>d", ":Git<CR>:exe 'resize'.(winheight(0)/2)<CR>")
+vim.keymap.set("n", "<Leader>D", ':Gvdiffsplit<CR>')
 
 vim.diagnostic.config({virtual_text = true})
 vim.keymap.set("n","<Leader>e", function()
